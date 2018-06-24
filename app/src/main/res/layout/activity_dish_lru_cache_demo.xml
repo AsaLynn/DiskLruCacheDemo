@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DiskLruCacheDemoActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btn_dish"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="dishlrucache操作" />
+        <Button
+            android:id="@+id/btn_str"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="dishlrucache操作String" />
+
+        <ImageView
+            android:id="@+id/iv_dish"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:textColor="@color/colorAccent"
+            android:textSize="24sp"
+            android:text="缓存大小"
+            android:id="@+id/tv1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+</LinearLayout>

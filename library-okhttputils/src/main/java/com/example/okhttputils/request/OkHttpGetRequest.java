@@ -1,0 +1,60 @@
+package com.example.okhttputils.request;
+
+import android.content.Context;
+import android.text.TextUtils;
+
+import java.util.Map;
+
+import okhttp3.Request;
+import okhttp3.RequestBody;
+
+/**
+ * Created by think on 2017/10/3.
+ */
+
+public class OkHttpGetRequest extends OkHttpRequest {
+
+    protected OkHttpGetRequest(String url, Map<String, String> params, Map<String, String> headers) {
+        super(url, params, headers);
+    }
+
+    protected OkHttpGetRequest(Context context, String url, Map<String, String> params, Map<String, String> headers) {
+        super(context, url, params, headers);
+    }
+
+    @Override
+    protected Request buildRequest() {
+        if (TextUtils.isEmpty(url)) {
+            throw new IllegalArgumentException("url can not be empty!");
+        }
+        //append params , if necessary
+        url = appendParams(url, params);
+        Request.Builder builder = new Request.Builder();
+        //add headers , if necessary
+        appendHeaders(builder, headers);
+        //builder.url(url).tag(tag);
+        return builder.url(url).build();
+    }
+
+    @Override
+    protected RequestBody buildRequestBody() {
+        return null;
+    }
+
+    private String appendParams(String url, Map<String, String> params) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(url + "?");
+        if (params != null && !params.isEmpty()) {
+            for (String key : params.keySet()) {
+                sb.append(key).append("=").append(params.get(key)).append("&");
+            }
+        }
+
+        sb = sb.deleteCharAt(sb.length() - 1);
+        return sb.toString();
+    }
+
+
+
+
+}
